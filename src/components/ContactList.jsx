@@ -105,30 +105,35 @@ const ContactListItem = ({ contact, onDeleteContact, onEditContact }) => {
   return (
     <ListGroup.Item as="li">
       <Row>
-        <Col>
+        <Col xs={6} sm={4} className="mb-1 mb-sm-0">
           <div className="fw-bold">{contact.name}</div>
         </Col>
-        <Col className="text-start">
+        <Col className="text-start mb-1 mb-sm-0" xs={6} sm={4}>
           <div className="me-auto">{contact.number}</div>
         </Col>
-        <Col className="text-end">
-          <Button
-            variant="outline-primary"
-            size="sm"
-            type="button"
-            onClick={() => onEditContact(contact)}
-            className="me-2"
-          >
-            Edit
-          </Button>
-          <Button
-            variant="outline-danger"
-            size="sm"
-            type="button"
-            onClick={() => onDeleteContact(contact.id)}
-          >
-            Delete
-          </Button>
+        <Col xs={12} sm={4}>
+          <Row>
+            <Col className="d-grid p-1">
+              <Button
+                variant="outline-primary"
+                size="sm"
+                type="button"
+                onClick={() => onEditContact(contact)}
+              >
+                Edit
+              </Button>
+            </Col>
+            <Col className="d-grid p-1">
+              <Button
+                variant="outline-danger"
+                size="sm"
+                type="button"
+                onClick={() => onDeleteContact(contact.id)}
+              >
+                Delete
+              </Button>
+            </Col>
+          </Row>
         </Col>
       </Row>
     </ListGroup.Item>
@@ -237,7 +242,7 @@ ContactListItem.propTypes = {
 // PropTypes for ContactEditModal
 ContactEditModal.propTypes = {
   show: PropTypes.bool.isRequired,
-  contact: PropTypes.object.isRequired,
+  contact: PropTypes.object,
   onClose: PropTypes.func.isRequired,
   onUpdateContact: PropTypes.func.isRequired,
 };
