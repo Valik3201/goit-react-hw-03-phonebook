@@ -16,6 +16,11 @@ export default class App extends Component {
   constructor(props) {
     super(props);
 
+    /**
+     * @type {Object}
+     * @property {Array} contacts - Array containing the contacts.
+     * @property {string} filter - The filter string for contact search.
+     */
     this.state = {
       contacts: [],
       filter: '',
@@ -24,6 +29,7 @@ export default class App extends Component {
     this.addContact = this.addContact.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.handleDeleteContact = this.handleDeleteContact.bind(this);
+    this.handleUpdateContacts = this.handleUpdateContacts.bind(this);
   }
 
   /**
@@ -56,6 +62,7 @@ export default class App extends Component {
 
   /**
    * Add a new contact to the state.
+   *
    * @param {Object} newContact - The new contact to be added.
    */
   addContact(newContact) {
@@ -66,6 +73,7 @@ export default class App extends Component {
 
   /**
    * Handle changes in the filter input.
+   *
    * @param {Object} e - The event object.
    */
   handleFilterChange(e) {
@@ -74,12 +82,23 @@ export default class App extends Component {
 
   /**
    * Handle the deletion of a contact.
+   *
    * @param {string} contactId - The ID of the contact to be deleted.
    */
   handleDeleteContact(contactId) {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
+  }
+
+  /**
+   * Handle updating contacts in the state.
+   *
+   * @param {Array} updatedContacts - The updated array of contacts.
+   */
+  handleUpdateContacts(updatedContacts) {
+    // Update the state with the new contacts array
+    this.setState({ contacts: updatedContacts });
   }
 
   render() {
@@ -94,6 +113,7 @@ export default class App extends Component {
         <Row className="justify-content-md-center">
           <Col>
             <h1>Phonebook</h1>
+
             <ContactForm
               addContact={this.addContact}
               contacts={this.state.contacts}
@@ -103,6 +123,7 @@ export default class App extends Component {
             <ContactList
               contacts={filteredContacts}
               onDeleteContact={this.handleDeleteContact}
+              onUpdateContacts={this.handleUpdateContacts}
             />
           </Col>
         </Row>
