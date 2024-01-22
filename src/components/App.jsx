@@ -17,18 +17,41 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      contacts: [
-        { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-        { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-        { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-        { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-      ],
+      contacts: [],
       filter: '',
     };
 
     this.addContact = this.addContact.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.handleDeleteContact = this.handleDeleteContact.bind(this);
+  }
+
+  /**
+   * Lifecycle method called after the component is mounted.
+   * Retrieves stored contacts from localStorage and updates the component state.
+   */
+  componentDidMount() {
+    // Retrieve stored contacts from localStorage
+    const storedContacts = localStorage.getItem('myPhonebook');
+
+    // If data is found, parse it back into an array of objects and set it in the state
+    if (storedContacts) {
+      this.setState({ contacts: JSON.parse(storedContacts) });
+    }
+  }
+
+  /**
+   * Lifecycle method called after the component updates.
+   * Saves the updated contacts data to localStorage when the state changes.
+   *
+   * @param {Object} prevProps - The previous props before the update.
+   * @param {Object} prevState - The previous state before the update.
+   */
+  componentDidUpdate(prevProps, prevState) {
+    // Save data to localStorage when the contacts state changes
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem('myPhonebook', JSON.stringify(this.state.contacts));
+    }
   }
 
   /**
