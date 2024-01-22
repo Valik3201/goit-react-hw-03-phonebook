@@ -180,11 +180,7 @@ const ContactEditModal = ({ show, contact, onClose, onUpdateContact }) => {
         <Form>
           <Row>
             <Col>
-              <FloatingLabel
-                controlId="floatingInput"
-                label="Name"
-                className="mb-3"
-              >
+              <FloatingLabel controlId="floatingInput" label="Name">
                 <Form.Control
                   type="text"
                   placeholder="Enter name"
@@ -196,11 +192,7 @@ const ContactEditModal = ({ show, contact, onClose, onUpdateContact }) => {
               </FloatingLabel>
             </Col>
             <Col>
-              <FloatingLabel
-                controlId="floatingInput"
-                label="Number"
-                className="mb-3"
-              >
+              <FloatingLabel controlId="floatingInput" label="Number">
                 <Form.Control
                   type="text"
                   placeholder="Enter number"
