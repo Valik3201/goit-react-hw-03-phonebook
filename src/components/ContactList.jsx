@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 /**
  * ContactList component for displaying a list of contacts.
@@ -33,22 +35,25 @@ export const ContactList = ({ contacts, onDeleteContact }) => {
  */
 const ContactListItem = ({ contact, onDeleteContact }) => {
   return (
-    <ListGroup.Item
-      as="li"
-      className="d-flex justify-content-between align-items-start"
-    >
-      <div className="fw-bold">{contact.name}</div>
-
-      <div className="ms-4 me-auto">{contact.number}</div>
-
-      <Button
-        variant="outline-danger"
-        size="sm"
-        type="button"
-        onClick={() => onDeleteContact(contact.id)}
-      >
-        Delete
-      </Button>
+    <ListGroup.Item as="li">
+      <Row>
+        <Col>
+          <div className="fw-bold">{contact.name}</div>
+        </Col>
+        <Col className="text-start">
+          <div className="me-auto">{contact.number}</div>
+        </Col>
+        <Col className="text-end">
+          <Button
+            variant="outline-danger"
+            size="sm"
+            type="button"
+            onClick={() => onDeleteContact(contact.id)}
+          >
+            Delete
+          </Button>
+        </Col>
+      </Row>
     </ListGroup.Item>
   );
 };
