@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { ListGroup, Row, Col, Button } from 'react-bootstrap';
+import { ListGroup, Row, Col, Button, Alert } from 'react-bootstrap';
 import { ContactEditModal } from './ContactEditModal';
 
 /**
@@ -65,6 +65,13 @@ export const ContactList = ({
 
   return (
     <>
+      {sortedContacts.length === 0 ? (
+        <Alert variant="danger">No contacts found. Please add contacts.</Alert>
+      ) : (
+        <Alert variant="primary">
+          You have {sortedContacts.length} contacts.
+        </Alert>
+      )}
       <ListGroup as="ul">
         {sortedContacts.map(contact => (
           <ContactListItem
