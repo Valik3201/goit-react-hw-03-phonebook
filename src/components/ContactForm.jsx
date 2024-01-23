@@ -1,12 +1,8 @@
 import { Component } from 'react';
-import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Form from 'react-bootstrap/Form';
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import { Form, Row, Col, Button, FloatingLabel } from 'react-bootstrap';
 
 /**
  * ContactForm component for adding new contacts.

@@ -4,10 +4,7 @@ import { ContactList } from './ContactList';
 import { Filter } from './Filter';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import { Container, Row, Col } from 'react-bootstrap';
 
 /**
  * Main application component representing the Phonebook.
