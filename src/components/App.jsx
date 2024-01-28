@@ -44,15 +44,26 @@ export default class App extends Component {
   }
 
   /**
+   * Checks if two values are equal by comparing their JSON representations.
+   *
+   * @param {*} a - The first value to be compared.
+   * @param {*} b - The second value to be compared.
+   * @returns {boolean} - Returns true if the JSON representations of the values are equal, otherwise returns false.
+   */
+  equalsCheck = (a, b) => {
+    return JSON.stringify(a) === JSON.stringify(b);
+  };
+
+  /**
    * Lifecycle method called after the component updates.
    * Saves the updated contacts data to localStorage when the state changes.
    *
    * @param {Object} prevProps - The previous props before the update.
    * @param {Object} prevState - The previous state before the update.
    */
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(_prevProps, prevState) {
     // Save data to localStorage when the contacts state changes
-    if (prevState.contacts !== this.state.contacts) {
+    if (!this.equalsCheck(prevState.contacts, this.state.contacts)) {
       localStorage.setItem('myPhonebook', JSON.stringify(this.state.contacts));
     }
   }
